@@ -1,0 +1,20 @@
+:root {
+    /* colors */
+    --light: #fff;
+    --light-contrast: #f3f3f3;
+    --light-border: #e1e1e1;
+    --light-content: #292933;
+
+    --dark: #292933;
+    --dark-contrast: #464649;
+    --dark-content: #fff;
+
+    --primary: #ff267d;
+    --primary-content: #fff;
+    --secondary: #f782c9;
+
+    /* font sizes */
+    --fs-large: 48px;
+    --fs-medium: 32px;
+    --fs-small: 24px;
+}

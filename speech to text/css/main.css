@@ -1,0 +1,144 @@
+* {
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: var(--fs-small);
+}
+
+[hidden] {
+    display: none!important;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button.dark {
+    background-color: var(--dark);
+    color: var(--dark-content);
+}
+
+button.dark:hover {
+    background-color: var(--dark-contrast);
+}
+
+button.dark:active {
+    background-color: var(--secondary);
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Scroll bar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+    background-color: transparent;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    padding: 30px;
+    background-color: var(--light-border);
+    border-radius: 10px;
+}
+
+/* Microphone button */
+#btn-microphone {
+    border-radius: 99px;
+    width: 100px;
+    height: 100px;
+}
+
+#btn-microphone.recording::before,
+#btn-microphone.recording::after {
+    position: absolute;
+    content: '';
+    border: 2px solid var(--primary);
+    border-radius: 99px;
+    width: 100px;
+    height: 100px;
+    animation: pulse 1.5s infinite;
+    opacity: 0;
+}
+
+#btn-microphone.recording::after {
+    animation-delay: 0.5s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+        border-width: 6px;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+        border-width: 1px;
+    }
+}
+
+#btn-microphone.recording {
+    background-color: var(--primary);
+}
+
+/* Transcript box */
+#transcript-box {
+    width: 640px;
+    height: 10ex;
+    padding: 20px 40px;
+    background-color: var(--light-contrast);
+    color: var(--primary-content);
+    border-radius: 18px;
+    font-weight: bold;
+    font-size: var(--fs-medium);
+    overflow-y: auto;
+}
+
+#transcript-box.recording {
+    background: linear-gradient(134deg, #FF267D 16.52%, #F782C9 98.83%);
+}
+
+#transcript-box::-webkit-scrollbar {
+    display: none;
+}
+
+#transcription-box-and-btn-microphone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Transcript history */
+#transcript-history {
+    content: '';
+    width: 800px;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+.transcript-history-box {
+    width: 100%;
+    background-color: var(--light-contrast);
+    border-radius: 18px;
+    padding: 20px 35px;
+}

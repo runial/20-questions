@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <title>Speech to text</title>
+</head>
+<body>
+<main class="center">
+    <div id="transcript-history"></div>
+
+    <p id="msg-get-started">
+        Press the microphone button to get started
+    </p>
+
+    <div id="transcription-box-and-btn-microphone">
+        <div id="transcript-box" hidden>
+
+        </div>
+        <button id="btn-microphone" class="dark center">
+            <img src="assets/icons/microphone-light.svg">
+        </button>
+    </div>
+</main>
+
+<!-- JS -->
+<script src="./js/helper_functions.mjs" type="module"></script>
+<script src="js/speech_recognition.mjs" type="module"></script>
+<script src="./js/init.mjs" type="module"></script>
+</body>
+</html>
