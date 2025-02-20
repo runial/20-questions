@@ -16,7 +16,7 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
     const transcriptHistory = $('#transcript-history');
     const microphoneButton = $('#btn-microphone');
 
-    // Init speech to text object
+    // Init speech recognition object
     const stt = new SpeechToText({
         onResult() {
             transcriptBox.innerText = stt.getResults();
