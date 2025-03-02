@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="UTF-8">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert Cool Name</title>
+  <!-- Shared CSS for Speech-to-Text -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
+  <link rel="stylesheet" href="speech_to_text/css/variables.css">
+  <link rel="stylesheet" href="speech_to_text/css/main.css">
+  
+</head>
+<body>
+  <h1>Insert Cool Name</h1>
+  <div class="container">
+    <!-- Speech-to-Text Section -->
+    <section id="speech-section">
+      <div id="transcript-history">
+        <!-- Transcript boxes (with corresponding images) will appear here -->
+      </div>
+      <p id="msg-get-started">Press the microphone button to get started</p>
+      <div id="transcription-box-and-btn-microphone">
+        <!-- The transcript box (used during active recording) -->
+        <div id="transcript-box" hidden></div>
+        <!-- The microphone button -->
+        <button id="btn-microphone" class="dark center">
+          <img src="speech_to_text/assets/icons/microphone-light.svg" alt="Microphone">
+        </button>
+      </div>
+    </section>
+  </div>
 
-        <title>20 questions</title>
-    </head>
-    <body>
-        <p>Hello world!</p>
-    </body>
+  <!-- Speech-to-Text Scripts -->
+  <script src="speech_to_text/js/helper_functions.mjs" type="module"></script>
+  <script src="speech_to_text/js/speech_recognition.mjs" type="module"></script>
+  <script src="speech_to_text/js/init.mjs" type="module"></script>
+
+  <!-- Image Generation Scripts -->
+  <script src="image_generation/image_generation.js"></script>
+  <script defer src="image_generation/init.js"></script>
+
+  <!-- Integration Script -->
+  <script src="speech_to_text/js/integration.js" type="module"></script>
+</body>
 </html>

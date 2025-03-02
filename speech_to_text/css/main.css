@@ -123,22 +123,39 @@ button.dark:active {
     gap: 10px;
 }
 
-/* Transcript history */
 #transcript-history {
-    content: '';
-    width: 800px;
-    height: 50vh;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 8px;
-    overflow-y: auto;
-    padding-right: 2px;
-}
-
-.transcript-history-box {
+    flex-wrap: wrap;
+    gap: 20px;
     width: 100%;
-    background-color: var(--light-contrast);
-    border-radius: 18px;
-    padding: 20px 35px;
-}
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    box-sizing: border-box;
+  }
+  
+  .transcript-history-box {
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    box-sizing: border-box;
+  }
+  
+  .transcript-history-box p {
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .transcript-history-box img {
+    display: block;
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
