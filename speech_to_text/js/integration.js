@@ -17,15 +17,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const transcriptText = node.innerText.trim();
             if (transcriptText) {
               console.log("Generating image for transcript:", transcriptText);
+              
+              // Create a status element
+              const statusElem = document.createElement('p');
+              statusElem.innerText = "Generating image...";
+              statusElem.style.fontStyle = "italic";
+              node.appendChild(statusElem);
+
               try {
                 // Call the global generateImage function (from image_generation.js)
                 const imageUrl = await generateImage(transcriptText);
+                // Remove the status element
+                node.removeChild(statusElem);
                 // Create an image element and append it to the transcript box
                 const imgElem = document.createElement('img');
                 imgElem.src = imageUrl;
                 node.appendChild(imgElem);
               } catch (error) {
                 console.error("Error generating image:", error);
+                statusElem.innerText = "Error generating image";
               }
             }
           }
