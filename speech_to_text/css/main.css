@@ -133,9 +133,9 @@ button.dark:active {
     border-radius: 8px;
     background: #fff;
     box-sizing: border-box;
-  }
+}
   
-  .transcript-history-box {
+.transcript-history-box {
     flex: 1 1 calc(33.33% - 20px);
     max-width: calc(33.33% - 20px);
     padding: 10px;
@@ -143,19 +143,50 @@ button.dark:active {
     border-radius: 8px;
     background: #fff;
     box-sizing: border-box;
-  }
+    transition: background-color 0.3s, border-color 0.3s;
+}
   
-  .transcript-history-box p {
+.transcript-history-box p {
     margin: 0;
     font-weight: bold;
-  }
+}
   
-  .transcript-history-box img {
+.transcript-history-box img {
     display: block;
     margin-top: 10px;
     max-width: 100%;
     height: auto;
     border: 1px solid #ddd;
     border-radius: 4px;
-  }
-  
+}
+
+/* ✅ Feedback colors */
+.transcript-history-box.correct {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.transcript-history-box.incorrect {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+button.yes-button {
+    background-color: #28a745; /* Green */
+    color: white;
+    border-radius: 4px;
+}
+
+button.yes-button:hover {
+    background-color: #218838;
+}
+
+button.no-button {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border-radius: 4px;
+}
+
+button.no-button:hover {
+    background-color: #c82333;
+}
