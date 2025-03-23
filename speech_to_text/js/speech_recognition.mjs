@@ -8,7 +8,7 @@ export class SpeechToText {
 
     static isSpeechRecognitionSupported() {
         return Boolean(
-            window.webkitSpeechRecognition || window.speechRecognition
+            window.webkitSpeechRecognition || window.SpeechRecognition
         );
     }
 
@@ -26,7 +26,7 @@ export class SpeechToText {
         if (window.webkitSpeechRecognition) {
             this.#recognition = new webkitSpeechRecognition();
         } else {
-            this.#recognition = new speechRecognition();
+            this.#recognition = new SpeechRecognition();
         }
         this.#recognition.lang = 'en-US';
         this.#recognition.continuous = true;
