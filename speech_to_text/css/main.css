@@ -1,5 +1,5 @@
 * {
-    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-family: -apple-system, 'Segoe UI', 'Inter', sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -8,13 +8,6 @@
 
 [hidden] {
     display: none!important;
-}
-
-main {
-    width: 100vw;
-    height: 100vh;
-    flex-direction: column;
-    gap: 20px;
 }
 
 button {
@@ -36,10 +29,28 @@ button.dark:active {
     background-color: var(--secondary);
 }
 
+#title {
+    text-align: center;
+    width: 100vw;
+    height: 40px;
+    font-size: var(--fs-small);
+    background-color: transparent;
+}
+
 .center {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+main {
+    display: grid;
+    grid-template-rows: 40px 1fr 150px;
+    height: 100vh;
+    width: 100%;
+    place-content: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Scroll bar */
@@ -59,8 +70,8 @@ button.dark:active {
 /* Microphone button */
 #btn-microphone {
     border-radius: 99px;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
 
 #btn-microphone.recording::before,
@@ -81,12 +92,12 @@ button.dark:active {
 
 @keyframes pulse {
     0% {
-        transform: scale(0.9);
+        transform: scale(0.5);
         opacity: 0.7;
         border-width: 6px;
     }
     100% {
-        transform: scale(1.4);
+        transform: scale(1.3);
         opacity: 0;
         border-width: 1px;
     }
@@ -98,8 +109,8 @@ button.dark:active {
 
 /* Transcript box */
 #transcript-box {
-    width: 640px;
-    height: 10ex;
+    width: min(640px, 100%);
+    height: 100%;
     padding: 20px 40px;
     background-color: var(--light-contrast);
     color: var(--primary-content);
@@ -118,32 +129,50 @@ button.dark:active {
 }
 
 #transcription-box-and-btn-microphone {
+    width: 100%;
     display: flex;
-    align-items: center;
     gap: 10px;
+    height: 150px;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    background-color: var(--light);
 }
 
 #transcript-history {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 320px));
     flex-wrap: wrap;
     gap: 20px;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
     border-radius: 8px;
     background: #fff;
     box-sizing: border-box;
+    width: 100vw;
+    overflow-y: auto;
+    justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    #transcript-history {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    #transcript-history {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
 }
   
 .transcript-history-box {
-    flex: 1 1 calc(33.33% - 20px);
-    max-width: calc(33.33% - 20px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background: #fff;
     box-sizing: border-box;
     transition: background-color 0.3s, border-color 0.3s;
+    height: fit-content;
 }
   
 .transcript-history-box p {

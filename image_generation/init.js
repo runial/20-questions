@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 // Generate and display image when button is pressed
@@ -14,3 +15,4 @@ document.getElementById('btn-generate-img').addEventListener('click', async () =
             = 'Error: ' + e.message;
     }
 });
+*/

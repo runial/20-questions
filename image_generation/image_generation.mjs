@@ -1,6 +1,6 @@
 'use strict';
 
-async function generateImage(imagePrompt) {
+export async function generateImage(imagePrompt) {
     const response = await fetch(
         'https://image.pollinations.ai/prompt/' + imagePrompt
     );

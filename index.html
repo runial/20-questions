@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <title>20 Questions Memory Tracker</title>
-  <!-- Shared CSS for Speech-to-Text -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
-  <link rel="stylesheet" href="speech_to_text/css/variables.css">
-  <link rel="stylesheet" href="speech_to_text/css/main.css">
-  
+    <meta charset="UTF-8">
+    <title>20 Questions Memory Tracker</title>
+    <!-- Shared CSS for Speech-to-Text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
+    <link rel="stylesheet" href="speech_to_text/css/variables.css">
+    <link rel="stylesheet" href="speech_to_text/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>20 Questions Memory Tracker</h1>
-  <div class="container">
+<main>
+    <div id="title" class="center">20 Questions Memory Tracker</div>
     <!-- Speech-to-Text Section -->
-    <section id="speech-section">
-      <div id="transcript-history">
+    <div id="transcript-history">
         <!-- Transcript boxes (with corresponding images) will appear here -->
-      </div>
-      <p id="msg-get-started">Press the microphone button to get started</p>
-      <div id="transcription-box-and-btn-microphone">
+    </div>
+
+    <div id="transcription-box-and-btn-microphone" class="center">
+        <p id="msg-get-started" class="center">Press the microphone button to get started.</p>
         <!-- The transcript box (used during active recording) -->
         <div id="transcript-box" hidden></div>
         <!-- The microphone button -->
         <button id="btn-microphone" class="dark center">
-          <img src="speech_to_text/assets/icons/microphone-light.svg" alt="Microphone">
+            <img src="speech_to_text/assets/icons/microphone-light.svg" alt="Microphone">
         </button>
-      </div>
-    </section>
-  </div>
+    </div>
+</main>
 
-  <!-- Speech-to-Text Scripts -->
-  <script src="speech_to_text/js/helper_functions.mjs" type="module"></script>
-  <script src="speech_to_text/js/speech_recognition.mjs" type="module"></script>
-  <script src="speech_to_text/js/init.mjs" type="module"></script>
+<!-- Speech-to-Text Scripts -->
+<script src="speech_to_text/js/helper_functions.mjs" type="module"></script>
+<script src="speech_to_text/js/speech_recognition.mjs" type="module"></script>
 
-  <!-- Image Generation Scripts -->
-  <script src="image_generation/image_generation.js"></script>
-  <script defer src="image_generation/init.js"></script>
+<!-- Image Generation Scripts -->
+<script src="image_generation/image_generation.mjs" type="module"></script>
 
-  <!-- Integration Script -->
-  <script src="speech_to_text/js/integration.js" type="module"></script>
+<!-- Init Script -->
+<script src="speech_to_text/js/init.mjs" type="module"></script>
 </body>
 </html>

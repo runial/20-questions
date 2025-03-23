@@ -1,4 +1,4 @@
-class SpeechToText {
+export class SpeechToText {
     #results = [''];
     #recognition;
     #isActive = false;
@@ -80,5 +80,3 @@ class SpeechToText {
         return this.#results.join(' ');
     }
 }
-
-export {SpeechToText};

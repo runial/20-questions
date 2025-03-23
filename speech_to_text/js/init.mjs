@@ -1,5 +1,6 @@
 import {$} from './helper_functions.mjs';
 import {SpeechToText} from './speech_recognition.mjs';
+import {generateImage} from "../../image_generation/image_generation.mjs";
 
 if (!SpeechToText.isSpeechRecognitionSupported()) {
     alert(
@@ -32,13 +33,76 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
         onStop() {
             // After recognition ends, keep track of what is said in the
             // transcription history if the transcript isn't blank
-            if (transcriptBox.innerText !== '') {
+            const transcriptText = transcriptBox.innerText;
+            if (transcriptText !== '') {
                 const el = $.createElement(
                     'div', {class: 'transcript-history-box'}
                 );
-                el.innerText = transcriptBox.innerText;
+                el.innerText = transcriptText;
                 transcriptHistory.append(el);
                 transcriptBox.innerText = '';
+                $.scrollBottom(transcriptHistory);
+
+                // Log image generation
+                console.log("Generating image for transcript:", transcriptText);
+
+                // Add yes/no buttons
+                const buttonContainer = document.createElement('div');
+                buttonContainer.style.marginTop = "10px";
+
+                const yesButton = document.createElement('button');
+                yesButton.innerText = "Yes";
+                yesButton.classList.add("yes-button");
+                yesButton.style.marginRight = "10px";
+                yesButton.style.padding = "5px 10px";
+
+                const noButton = document.createElement('button');
+                noButton.innerText = "No";
+                noButton.classList.add("no-button");
+                noButton.style.padding = "5px 10px";
+
+                // Event listeners
+                yesButton.addEventListener('click', () => {
+                    el.classList.remove("incorrect");
+                    el.classList.add("correct");
+                });
+
+                noButton.addEventListener('click', () => {
+                    el.classList.remove("correct");
+                    el.classList.add("incorrect");
+                });
+
+                // Append buttons
+                buttonContainer.appendChild(yesButton);
+                buttonContainer.appendChild(noButton);
+                el.appendChild(buttonContainer);
+
+                // Create a status element
+                const statusElem = document.createElement('p');
+                statusElem.innerText = "Generating image...";
+                statusElem.style.fontStyle = "italic";
+                el.appendChild(statusElem);
+
+                const imgElem = document.createElement('img');
+                el.append(imgElem);
+
+                // Actually generate image
+                generateImage(transcriptText)
+                    .then((imageUrl) => {
+                        // Remove the status element
+                        el.removeChild(statusElem);
+
+                        // Create an image element and append it to the transcript box
+                        imgElem.src = imageUrl;
+
+                        // Scroll to bottom
+                        setTimeout(()=>$.scrollBottom(transcriptHistory), 0);
+                    })
+                    .catch(error => {
+                        statusElem.innerText = "Error generating image";
+                        throw error;
+                    });
+
                 $.scrollBottom(transcriptHistory);
             }
 

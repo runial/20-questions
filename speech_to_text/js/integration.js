@@ -1,3 +1,4 @@
+/*
 import {$} from './helper_functions.mjs';
 console.log("Integration script loaded.");
 
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
               node.appendChild(statusElem);
 
               try {
-                // Call the global generateImage function (from image_generation.js)
+                // Call the global generateImage function (from image_generation.mjs)
                 const imageUrl = await generateImage(transcriptText);
 
                 // Remove the status element
@@ -80,3 +81,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   observer.observe(transcriptHistory, { childList: true });
 });
+*/

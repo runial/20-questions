@@ -1,4 +1,4 @@
-const $ = (selector) =>
+export const $ = (selector) =>
     document.querySelector(selector);
 $.all = (selector) =>
     document.querySelectorAll(selector);
@@ -14,5 +14,3 @@ $.createElement = (elementName, attributes) => {
         el.setAttribute(attributeName, attributes[attributeName]);
     return el;
 }
-
-export {$};
