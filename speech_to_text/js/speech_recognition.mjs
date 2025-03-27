@@ -1,3 +1,5 @@
+import {callLlm} from "./call_llm.mjs";
+
 export class SpeechToText {
     #results = [''];
     #recognition;
@@ -49,8 +51,7 @@ export class SpeechToText {
             if (result.isFinal) {
                 // Try to add punctuation; if API doesn't work then proceed anyway
                 try {
-                    this.#results[this.#results.length-1] = await (await fetch(`https://text.pollinations.ai/Punctuate and capitalize this: "${this.#results[this.#results.length-1]}". Return only the punctuated  paragraph. Do not make any additional comments or add quotation marks. If you do not have anything to parse, return nothing.`)
-                    ).text();
+                    this.#results[this.#results.length-1] = await callLlm(`Punctuate and capitalize this: "${this.#results[this.#results.length-1]}". Return only the punctuated paragraph. Do not make any additional comments or add quotation marks. If you do not have anything to parse, return nothing.`)
                 } catch (e) {}
                 this.#results.push('');
             }

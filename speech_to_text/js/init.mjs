@@ -96,7 +96,7 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
                         imgElem.src = imageUrl;
 
                         // Scroll to bottom
-                        setTimeout(()=>$.scrollBottom(transcriptHistory), 0);
+                        setTimeout(()=>$.scrollBottom(transcriptHistory), 50);
                     })
                     .catch(error => {
                         statusElem.innerText = "Error generating image";
