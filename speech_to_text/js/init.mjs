@@ -2,6 +2,7 @@ import {$} from './helper_functions.mjs';
 import {SpeechToText} from './speech_recognition.mjs';
 import {generateImage} from "../../image_generation/image_generation.mjs";
 
+
 if (!SpeechToText.isSpeechRecognitionSupported()) {
     alert(
         'Failed to start speech recognition. Try switching to a browser that '
@@ -14,6 +15,8 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
     );
 } else {
     const transcriptBox = $('#transcript-box');
+    let questions = 0;
+    const MAX_QUESTIONS = 20;
     const transcriptHistory = $('#transcript-history');
     const microphoneButton = $('#btn-microphone');
 
@@ -35,6 +38,13 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
             // transcription history if the transcript isn't blank
             const transcriptText = transcriptBox.innerText;
             if (transcriptText !== '') {
+                questions++;
+                if (questions>MAX_QUESTIONS)
+                {
+                    alert("You have reached the limit of 20 questions. Please make your guess!")
+                    microphoneButton.disabled = true;
+                    return;
+                }
                 const el = $.createElement(
                     'div', {class: 'transcript-history-box'}
                 );
