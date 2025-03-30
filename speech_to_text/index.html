@@ -2,35 +2,53 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-
-    <!-- CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text with Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="./css/main.css">
-
-    <title>Speech to text</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<main class="center">
+
+<!-- Options screen (temporary) -->
+<div id="options-screen" style="text-align: center; margin-top: 100px;">
+    <h1 style="font-size: 3rem;">Select Mode</h1>
+    <div style="margin-top: 50px;">
+        <button id="normal-btn" style="padding: 1rem 2rem; font-size: 1.2rem; margin: 20px; border-radius: 12px; background-color: #4f46e5; color: white; border: none; cursor: pointer;">Normal</button>
+        <button id="twenty-questions-btn" style="padding: 1rem 2rem; font-size: 1.2rem; margin: 20px; border-radius: 12px; background-color: #4f46e5; color: white; border: none; cursor: pointer;">20 Questions</button>
+    </div>
+</div>
+
+<!-- main app UI -->
+<main class="center" id="main-app" hidden>
     <div id="transcript-history"></div>
-
-    <p id="msg-get-started">
-        Press the microphone button to get started
-    </p>
-
+    <p id="msg-get-started">Press the microphone button to get started</p>
     <div id="transcription-box-and-btn-microphone">
-        <div id="transcript-box" hidden>
-
-        </div>
+        <div id="transcript-box" hidden></div>
         <button id="btn-microphone" class="dark center">
-            <img src="assets/icons/microphone-light.svg">
+            <img src="assets/icons/microphone-light.svg" alt="Microphone">
         </button>
     </div>
 </main>
 
-<!-- JS -->
-<script src="./js/helper_functions.mjs" type="module"></script>
+<!-- option selection, then gets rid of this screen and goes back to the main app -->
+<script>
+    document.getElementById('normal-btn').addEventListener('click', () => {
+        localStorage.setItem('twentyQuestionsMode', 'false');
+        document.getElementById('options-screen').style.display = 'none';
+        document.getElementById('main-app').hidden = false;
+    });
+
+    document.getElementById('twenty-questions-btn').addEventListener('click', () => {
+        localStorage.setItem('twentyQuestionsMode', 'true');
+        document.getElementById('options-screen').style.display = 'none';
+        document.getElementById('main-app').hidden = false;
+    });
+</script>
+
+<script src="js/helper_functions.mjs" type="module"></script>
 <script src="js/speech_recognition.mjs" type="module"></script>
-<script src="./js/init.mjs" type="module"></script>
+<script src="js/init.mjs" type="module"></script>
+
 </body>
 </html>
