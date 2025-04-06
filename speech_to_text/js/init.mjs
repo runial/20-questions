@@ -19,6 +19,8 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
     const MAX_QUESTIONS = 20;
     const transcriptHistory = $('#transcript-history');
     const microphoneButton = $('#btn-microphone');
+    const questionCounter = $('#question-counter');
+    questionCounter.innerText = `Question ${questions} of ${MAX_QUESTIONS}`;
 
     // Init speech recognition object
     const stt = new SpeechToText({
@@ -39,6 +41,7 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
             const transcriptText = transcriptBox.innerText;
             if (transcriptText !== '') {
                 questions++;
+                questionCounter.innerText = `Question ${questions} of ${MAX_QUESTIONS}`;
                 if (questions>MAX_QUESTIONS)
                 {
                     alert("You have reached the limit of 20 questions. Please make your guess!")
