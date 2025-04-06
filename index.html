@@ -10,7 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<main>
+
+<div id="options-screen" style="text-align: center; margin-top: 100px;">
+    <h1 style="font-size: 3rem;">Select Mode</h1>
+    <div style="margin-top: 50px;">
+        <button id="normal-btn" style="padding: 1rem 2rem; font-size: 1.2rem; margin: 20px; border-radius: 12px; background-color: #4f46e5; color: white; border: none; cursor: pointer;">Normal</button>
+        <button id="twenty-questions-btn" style="padding: 1rem 2rem; font-size: 1.2rem; margin: 20px; border-radius: 12px; background-color: #4f46e5; color: white; border: none; cursor: pointer;">20 Questions</button>
+    </div>
+</div>
+
+<main id="main-app" hidden>
     <div id="title" class="center">20 Questions Memory Tracker</div>
     <!-- Speech-to-Text Section -->
     <div id="transcript-history">
@@ -28,15 +37,27 @@
     </div>
 </main>
 
-<!-- Speech-to-Text Scripts -->
+<script>
+    document.getElementById('normal-btn').addEventListener('click', () => {
+        localStorage.setItem('twentyQuestionsMode', 'false');
+        document.getElementById('options-screen').style.display = 'none';
+        document.getElementById('main-app').hidden = false;
+    });
+
+    document.getElementById('twenty-questions-btn').addEventListener('click', () => {
+        localStorage.setItem('twentyQuestionsMode', 'true');
+        document.getElementById('options-screen').style.display = 'none';
+        document.getElementById('main-app').hidden = false;
+    });
+</script>
+
 <script src="speech_to_text/js/call_llm.mjs" type="module"></script>
 <script src="speech_to_text/js/helper_functions.mjs" type="module"></script>
 <script src="speech_to_text/js/speech_recognition.mjs" type="module"></script>
 
-<!-- Image Generation Scripts -->
 <script src="image_generation/image_generation.mjs" type="module"></script>
 
-<!-- Init Script -->
 <script src="speech_to_text/js/init.mjs" type="module"></script>
+
 </body>
 </html>
