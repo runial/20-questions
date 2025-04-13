@@ -115,7 +115,7 @@ main {
     height: 100%;
     padding: 20px 40px;
     background-color: var(--light-contrast);
-    color: var(--primary-content);
+    color: var(--dark);
     border-radius: 18px;
     font-weight: bold;
     font-size: var(--fs-medium);
@@ -124,6 +124,7 @@ main {
 
 #transcript-box.recording {
     background: linear-gradient(134deg, #FF267D 16.52%, #F782C9 98.83%);
+    color: var(--primary-content);
 }
 
 #transcript-box::-webkit-scrollbar {
@@ -219,15 +220,15 @@ button.no-button:hover {
     background-color: #c82333;
 }
 
-button.send-button {
-    background-color: #ff09a5; 
-    color: white;
+#btn-send-prompt {
+    background-color: var(--dark);
+    color: var(--primary-content);
     border-radius: 8px;
     padding: 10px 20px;
     font-weight: bold;
 }
 
-button.send-button:hover {
-    background-color: #a10869;
+#btn-send-prompt:hover {
+    background-color: var(--dark-contrast);
 }
 
