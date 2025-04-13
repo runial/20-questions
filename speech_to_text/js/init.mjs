@@ -60,36 +60,37 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
                 console.log("Generating image for transcript:", transcriptText);
 
                 // Add yes/no buttons
-                const buttonContainer = document.createElement('div');
-                buttonContainer.style.marginTop = "10px";
+                if (localStorage.getItem('twentyQuestionsMode') === 'true') {
+                    const buttonContainer = document.createElement('div');
+                    buttonContainer.style.marginTop = "10px";
 
-                const yesButton = document.createElement('button');
-                yesButton.innerText = "Yes";
-                yesButton.classList.add("yes-button");
-                yesButton.style.marginRight = "10px";
-                yesButton.style.padding = "5px 10px";
+                    const yesButton = document.createElement('button');
+                    yesButton.innerText = "Yes";
+                    yesButton.classList.add("yes-button");
+                    yesButton.style.marginRight = "10px";
+                    yesButton.style.padding = "5px 10px";
 
-                const noButton = document.createElement('button');
-                noButton.innerText = "No";
-                noButton.classList.add("no-button");
-                noButton.style.padding = "5px 10px";
+                    const noButton = document.createElement('button');
+                    noButton.innerText = "No";
+                    noButton.classList.add("no-button");
+                    noButton.style.padding = "5px 10px";
 
-                // Event listeners
-                yesButton.addEventListener('click', () => {
+                    // Event listeners
+                    yesButton.addEventListener('click', () => {
                     el.classList.remove("incorrect");
                     el.classList.add("correct");
-                });
+                    });
 
-                noButton.addEventListener('click', () => {
+                    noButton.addEventListener('click', () => {
                     el.classList.remove("correct");
                     el.classList.add("incorrect");
-                });
+                    });
 
-                // Append buttons
-                buttonContainer.appendChild(yesButton);
-                buttonContainer.appendChild(noButton);
-                el.appendChild(buttonContainer);
-
+                    // Append buttons
+                    buttonContainer.appendChild(yesButton);
+                    buttonContainer.appendChild(noButton);
+                    el.appendChild(buttonContainer); 
+                }
                 // Create a status element
                 const statusElem = document.createElement('p');
                 statusElem.innerText = "Generating image...";
