@@ -189,7 +189,6 @@ main {
     border-radius: 4px;
 }
 
-/* ✅ Feedback colors */
 .transcript-history-box.correct {
     background-color: #d4edda;
     border-color: #c3e6cb;
