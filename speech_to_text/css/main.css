@@ -219,3 +219,16 @@ button.no-button {
 button.no-button:hover {
     background-color: #c82333;
 }
+
+button.send-button {
+    background-color: #ff09a5; 
+    color: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+button.send-button:hover {
+    background-color: #a10869;
+}
+
