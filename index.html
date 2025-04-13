@@ -11,6 +11,7 @@
 </head>
 <body>
 
+<!-- Mode Selection -->
 <div id="options-screen" style="text-align: center; margin-top: 100px;">
     <h1 style="font-size: 3rem;">Select Mode</h1>
     <div style="margin-top: 50px;">
@@ -19,13 +20,14 @@
     </div>
 </div>
 
+<!-- Main App UI -->
 <main id="main-app" hidden>
     <div id="title" class="center">20 Questions Memory Tracker</div>
-    <!-- Speech-to-Text Section -->
-    <div id="transcript-history">
-        <!-- Transcript boxes (with corresponding images) will appear here -->
-    </div>
     
+    <div id="transcript-history">
+        <!-- Transcript boxes with images appear here -->
+    </div>
+
     <div id="transcription-box-and-btn-microphone" class="center">
         <p id="msg-get-started" class="center">Press the microphone button to get started.</p>
         <div id="transcript-box" hidden></div>
@@ -33,32 +35,43 @@
             <button id="btn-microphone" class="dark center" style="margin-bottom: 10px;">
                 <img src="speech_to_text/assets/icons/microphone-light.svg" alt="Microphone">
             </button>
-            <button id="btn-send-prompt" class="send-button">Send Prompt!</button>
+            <button id="btn-send-prompt" class="send-button">Send Prompt</button>
         </div>
     </div>
-    
 </main>
 
+<!-- Script to handle mode selection -->
 <script>
+    const optionsScreen = document.getElementById('options-screen');
+    const mainApp = document.getElementById('main-app');
+
+    // Auto-launch app if user already picked a mode
+    if (localStorage.getItem('startAppNow') === 'true') {
+        optionsScreen.style.display = 'none';
+        mainApp.hidden = false;
+        localStorage.removeItem('startAppNow');
+    }
+
+    // Normal Mode
     document.getElementById('normal-btn').addEventListener('click', () => {
         localStorage.setItem('twentyQuestionsMode', 'false');
-        document.getElementById('options-screen').style.display = 'none';
-        document.getElementById('main-app').hidden = false;
+        localStorage.setItem('startAppNow', 'true');
+        setTimeout(() => location.reload(), 50);
     });
 
+    // 20 Questions Mode
     document.getElementById('twenty-questions-btn').addEventListener('click', () => {
         localStorage.setItem('twentyQuestionsMode', 'true');
-        document.getElementById('options-screen').style.display = 'none';
-        document.getElementById('main-app').hidden = false;
+        localStorage.setItem('startAppNow', 'true');
+        setTimeout(() => location.reload(), 50);
     });
 </script>
 
+<!-- Module imports -->
 <script src="speech_to_text/js/call_llm.mjs" type="module"></script>
 <script src="speech_to_text/js/helper_functions.mjs" type="module"></script>
 <script src="speech_to_text/js/speech_recognition.mjs" type="module"></script>
-
 <script src="image_generation/image_generation.mjs" type="module"></script>
-
 <script src="speech_to_text/js/init.mjs" type="module"></script>
 
 </body>
