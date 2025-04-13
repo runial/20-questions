@@ -18,15 +18,27 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
     const MAX_QUESTIONS = 20;
     const transcriptHistory = $('#transcript-history');
     const microphoneButton = $('#btn-microphone');
+    const sendButton = $('#btn-send-prompt');
+    const questionCounter = $('#question-counter');
     const isTwentyQMode = localStorage.getItem('twentyQuestionsMode') === 'true';
     console.log('20 Questions Mode:', isTwentyQMode);
+
+    // Show counter only in 20Q mode
+    if (isTwentyQMode && questionCounter) {
+        questionCounter.hidden = false;
+        questionCounter.innerText = `Question 0 of ${MAX_QUESTIONS}`;
+    }
 
     function addTranscriptToHistory(transcriptText) {
         if (isTwentyQMode) {
             questions++;
+            if (questionCounter) {
+                questionCounter.innerText = `Question ${questions} of ${MAX_QUESTIONS}`;
+            }
             if (questions > MAX_QUESTIONS) {
                 alert("You have reached the limit of 20 questions. Please make your guess!");
                 microphoneButton.disabled = true;
+                sendButton.disabled = true;
                 return;
             }
         }
@@ -100,7 +112,6 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
             transcriptBox.classList.add('recording');
         },
         onStop() {
-            // Don't send anything — just stop recording and keep transcript
             microphoneButton.classList.remove('recording');
             transcriptBox.classList.remove('recording');
         }
@@ -111,8 +122,7 @@ if (!SpeechToText.isSpeechRecognitionSupported()) {
         else stt.start();
     });
 
-    // Send image only when user clicks this
-    $('#btn-send-prompt').addEventListener('click', () => {
+    sendButton.addEventListener('click', () => {
         const transcriptText = transcriptBox.innerText.trim();
         if (transcriptText !== '') {
             addTranscriptToHistory(transcriptText);

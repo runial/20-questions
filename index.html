@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>20 Questions Memory Tracker</title>
+
     <!-- Shared CSS for Speech-to-Text -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
     <link rel="stylesheet" href="speech_to_text/css/variables.css">
@@ -22,7 +23,9 @@
 
 <!-- Main App UI -->
 <main id="main-app" hidden>
-    <div id="title" class="center">20 Questions Memory Tracker</div>
+    <div id="title" class="center">20 Questions Memory Tracker
+        <p id="question-counter" style="margin-left: 12px;" hidden>Question 0 of 20</p>
+    </div>
     
     <div id="transcript-history">
         <!-- Transcript boxes with images appear here -->
