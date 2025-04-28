@@ -1,6 +1,8 @@
 # 20 Questions
 ## Introduction
-Our project was made for the MIT Beaver Works CRE[AT]E Challenge. Our goal was to work with a co-designer to meet their needs, and to do so, we made this specially-designed 20 questions game. We are a team of four students from Thomas Jefferson High School for Science and Technology (TJHSST).
+Our project was made for the MIT Beaver Works CRE[AT]E Challenge 2024-25. Our goal was to work with a co-designer to meet their needs, and to do so, we made this specially-designed 20 questions game. We are a team of four students from Thomas Jefferson High School for Science and Technology (TJHSST).
+
+The co-designer has numerous conditions that impact his ability to play one of his favorite games, 20 questions. These conditions affect his ability to read and remember, which is why we created this adaptation. We leveraged AI technology to create a memory tracker, complete with speech recognition, image generation, and color coding. This allows our co-designer to overcome his conditions and better enjoy conversations with others.
 
 ## Software tools
 Our final application is made with HTML, CSS, and JavaScript and is available as a website. Although we considered using other platforms (like iOS or Android), we realized that there would be issues with portability and cross-platform use. So, we ultimately chose to make a web app so Kiran can use it on any device they prefer.
